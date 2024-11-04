@@ -1,6 +1,7 @@
 export class musica {
     id: number
     nombre: string
-    apellido: string
+    genero: string
     artista: string
+    static Id: number
 }

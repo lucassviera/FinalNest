@@ -26,14 +26,17 @@ postUsuarios (nuevoUsuario: usuarios): string {
     return nuevoUsuario.nombre;
 }
 putUsuarios(nuevosDatos:usuarios, userToUpdate: number): boolean {
-const userToUpdateId: usuarios = this.listaUsuarios.find (m => m.id === userToUpdate);
-if (userToUpdate != undefined){
-    userToUpdateId.nombre = nuevosDatos.nombre;
-    userToUpdateId.apellido = nuevosDatos.apellido;
-    return true;
+//const userToUpdateId: usuarios = this.listaUsuarios.find (m => m.id === userToUpdate);
+for (const usuario of this.listaUsuarios) {
+    if (usuario.id == userToUpdate){
+
+        Object.assign(usuario, nuevosDatos);
+
+        return true
+    }
+
 }
-else
-    return false;
+return false
 }
 deleteUsuarios(id:number):boolean{
     const indiceUsuarioAEliminar = this.listaUsuarios.findIndex ( u => u.id === id);

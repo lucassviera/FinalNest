@@ -9,7 +9,7 @@ constructor (){
     let musica : musica = {
         id: 1,
         nombre:"tan solo",
-        apellido: "asjaja",
+        genero: "asjaja",
         artista: "los piojos"
     
     }
@@ -27,20 +27,22 @@ postmusica (nuevaMusica:musica): string {
     const mu = new musica();
     mu.id = nuevaMusica.id;
     mu.nombre = nuevaMusica.nombre;
-    mu.apellido = nuevaMusica.apellido;
+    mu.genero = nuevaMusica.genero;
     mu.artista = nuevaMusica.artista;
     this.listaMusica.push(mu)
     return mu.nombre;
 }
-putmusica(nuevosDatos:musica, userToUpdate: number): boolean {
-const musicToUpdateId: musica = this.listaMusica.find (m => m.id === musicToUpdateId);
-if (userToUpdate != undefined){
-    musicToUpdateId.nombre = nuevosDatos.nombre;
-   musicToUpdateId.artista = nuevosDatos.artista;
-    return true;
+putmusica(nuevosDatos:musica, id: number): boolean {
+//const musicToUpdateId: musica = this.listaMusica.find (m => m.id === userToUpdate);
+for (const cancion of this.listaMusica){
+    if (cancion.id == id){
+
+        Object.assign(cancion, nuevosDatos);
+        return true
+    }
 }
-else
-    return false;
+return false
+
 }
 deletemusica(id:number):boolean{
     const indiceMusicaAEliminar = this.listaMusica.findIndex ( m => m.id === id);
